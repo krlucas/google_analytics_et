@@ -1,6 +1,6 @@
 {
   "name": "drupal/google_analytics_et",
-  "type": "drupal-module",
+  "type": "drupal-custom-module",
   "description": "Allows configuration for tracking DOM events with Google Analytics.",
   "keywords": ["Drupal"],
   "license": "GPL-2.0+",
