@@ -1,0 +1,12 @@
+google_analytics_et.google_analytics_event_tracker.*:
+  type: config_entity
+  label: 'Google Analytics event tracker config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    uuid:
+      type: string
