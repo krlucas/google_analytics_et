@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains google_analytics_et.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function google_analytics_et_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the google_analytics_et module.
+    case 'help.page.google_analytics_et':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Allows configuration for tracking DOM events with Google Analytics.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
