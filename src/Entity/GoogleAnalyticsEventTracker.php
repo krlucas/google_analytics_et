@@ -54,4 +54,57 @@ class GoogleAnalyticsEventTracker extends ConfigEntityBase implements GoogleAnal
    */
   protected $label;
 
+  protected $element_dom_id;
+
+  protected $element_selector;
+
+  protected $dom_event;
+
+  protected $ga_event_category;
+
+  protected $ga_event_action;
+
+  protected $ga_event_label;
+
+  protected $ga_event_value;
+
+  protected $ga_event_bounce;
+
+  protected $content_types;
+
+  protected $languages;
+
+  protected $themes;
+
+  protected $preprocess;
+
+  protected $path_negate;
+
+  protected $paths;
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getDomEvents() {
+    return [
+      'click' => 'click',
+      'dblclick' => 'dblclick',
+      'mousedown' => 'mousedown',
+      'mouseup' => 'mouseup',
+      'mouseover' => 'mouseover',
+      'mousemove' => 'mousemove',
+      'mouseout' => 'mouseout',
+      'keydown' => 'keydown',
+      'keypress' => 'keypress',
+      'keyup' => 'keyup',
+      'select' => 'select',
+      'change' => 'change',
+      'submit' => 'submit',
+      'reset' => 'reset',
+      'focus' => 'focus',
+      'scroll' => 'scroll',
+      'blur' => 'blur',
+    ];
+  }
+
 }

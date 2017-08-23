@@ -9,5 +9,11 @@ use Drupal\Core\Config\Entity\ConfigEntityInterface;
  */
 interface GoogleAnalyticsEventTrackerInterface extends ConfigEntityInterface {
 
-  // Add get/set methods for your configuration properties here.
+  /**
+   * Returns the list of DOM events supported by this tracker.
+   *
+   * @return array
+   */
+  public function getDomEvents();
+
 }
