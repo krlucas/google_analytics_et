@@ -39,9 +39,9 @@ class GoogleAnalyticsEventTrackerDeleteForm extends EntityConfirmFormBase {
     $this->entity->delete();
 
     drupal_set_message(
-      $this->t('content @type: deleted @label.',
+      $this->t('Deleted @type @label.',
         [
-          '@type' => $this->entity->bundle(),
+          '@type' => $this->entity->getEntityType()->getLabel(),
           '@label' => $this->entity->label(),
         ]
         )

@@ -38,7 +38,7 @@ class GoogleAnalyticsEventTrackerForm extends EntityForm {
 
     $form['dom_event'] = [
       '#type' => 'select',
-      '#title' => $this->t('DOM Event'),
+      '#title' => $this->t('User Interaction'),
       '#description' => $this->t('The browser event to track on the selected element(s).'),
       '#options' => $entity->getDomEvents(),
       '#default_value' => $entity->get('dom_event') ?: 'click',

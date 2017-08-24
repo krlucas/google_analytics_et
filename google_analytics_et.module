@@ -16,9 +16,17 @@ function google_analytics_et_help($route_name, RouteMatchInterface $route_match)
     case 'help.page.google_analytics_et':
       $output = '';
       $output .= '<h3>' . t('About') . '</h3>';
-      $output .= '<p>' . t('Allows configuration for tracking DOM events with Google Analytics.') . '</p>';
+      $output .= '<p>' . t('Allows configuration for tracking user interaction events with Google Analytics.') . '</p>';
       return $output;
 
     default:
   }
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function google_analytics_et_page_attachments(&$attachments) {
+  // Add our effective JS attachments and settings (if any).
+  \Drupal::service('google_analytics_event_tracking')->addAttachments($attachments);
 }

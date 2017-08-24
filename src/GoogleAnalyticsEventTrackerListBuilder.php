@@ -18,7 +18,7 @@ class GoogleAnalyticsEventTrackerListBuilder extends ConfigEntityListBuilder {
     $header['label'] = $this->t('Tracker');
     $header['id'] = $this->t('Machine name');
     $header['paths'] = $this->t('Effective On');
-    $header['event'] = $this->t('Event');
+    $header['event'] = $this->t('User Interaction');
     $header['selector'] = $this->t('Element Selector');
     $header['category'] = $this->t('Category');
     $header['action'] = $this->t('Action');
