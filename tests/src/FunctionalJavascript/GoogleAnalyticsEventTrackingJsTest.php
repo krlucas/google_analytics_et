@@ -30,6 +30,9 @@ class GoogleAnalyticsEventTrackingJsTest extends JavascriptTestBase {
     parent::setUp();
     $this->container->get('theme_installer')->install(['bartik']);
     $this->container->get('config.factory')->getEditable('system.theme')->set('default', 'bartik')->save();
+    // Set a fake account for GA so the script is added to the page.
+    $this->config('google_analytics.settings')->set('account', 'UA-123456-1');
+    // Create a test tracker config.
     GoogleAnalyticsEventTracker::create([
       'label' => 'test tracker',
       'id' => 'test_tracker',
@@ -41,7 +44,6 @@ class GoogleAnalyticsEventTrackingJsTest extends JavascriptTestBase {
       'ga_event_value' => 666,
       'ga_event_noninteraction' => 0,
     ]);
-
   }
 
   /**
