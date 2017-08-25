@@ -33,7 +33,7 @@
       'eventAction': Drupal.googleAnalyticsEtTokenReplace(tracker.action, element),
       'eventLabel': Drupal.googleAnalyticsEtTokenReplace(tracker.label, element),
       'eventValue': Number(tracker.value),
-      'nonInteraction': Boolean(tracker.bounce)
+      'nonInteraction': Boolean(tracker.noninteraction)
     });
   };
 

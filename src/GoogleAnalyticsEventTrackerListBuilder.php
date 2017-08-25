@@ -24,7 +24,7 @@ class GoogleAnalyticsEventTrackerListBuilder extends ConfigEntityListBuilder {
     $header['action'] = $this->t('Action');
     $header['ga_label'] = $this->t('Event Label');
     $header['value'] = $this->t('Value');
-    $header['bounce'] = $this->t('Is Bounce?');
+    $header['noninteraction'] = $this->t('Non-interaction?');
     return $header + parent::buildHeader();
   }
 
@@ -74,7 +74,7 @@ class GoogleAnalyticsEventTrackerListBuilder extends ConfigEntityListBuilder {
     $row['action'] = $entity->get('ga_event_action');
     $row['ga_label'] = $entity->get('ga_event_label');
     $row['value'] = $entity->get('ga_event_value');
-    $row['bounce'] = $entity->get('ga_event_bounce') ? $this->t('Yes') : $this->t('No');
+    $row['bounce'] = $entity->get('ga_event_noninteraction') ? $this->t('Yes') : $this->t('No');
     return $row + parent::buildRow($entity);
   }
 

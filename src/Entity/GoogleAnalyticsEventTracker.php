@@ -71,7 +71,7 @@ class GoogleAnalyticsEventTracker extends ConfigEntityBase implements GoogleAnal
 
   protected $ga_event_value;
 
-  protected $ga_event_bounce;
+  protected $ga_event_noninteraction;
 
   protected $content_types;
 
@@ -122,7 +122,7 @@ class GoogleAnalyticsEventTracker extends ConfigEntityBase implements GoogleAnal
       'action' => $this->ga_event_action,
       'label' => $this->ga_event_label,
       'value' => $this->ga_event_value,
-      'bounce' => $this->ga_event_bounce,
+      'noninteraction' => $this->ga_event_noninteraction,
     ];
   }
 

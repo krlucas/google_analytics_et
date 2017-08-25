@@ -26,11 +26,11 @@ google_analytics_et.google_analytics_event_tracker.*:
       type: string
       label: 'Google Analytics Event Label'
     ga_event_value:
-      type: string
+      type: integer
       label: 'Google Analytics Event Value'
-    ga_event_bounce:
+    ga_event_noninteraction:
       type: boolean
-      label: 'Google Analytics Event Bounce'
+      label: 'Google Analytics Non-interaction Event'
     content_types:
       type: array
       label: 'Content Types to apply event tracker'

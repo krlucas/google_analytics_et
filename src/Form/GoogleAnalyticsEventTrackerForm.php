@@ -83,22 +83,23 @@ class GoogleAnalyticsEventTrackerForm extends EntityForm {
     ];
 
     $form['event']['ga_event_value'] = [
-      '#type' => 'textfield',
+      '#type' => 'number',
+      '#step' => 1,
       '#title' => $this->t('Value'),
       '#description' => $this->t("The event value."),
       '#default_value' => $entity->get('ga_event_value') ? : '',
       '#required' => TRUE,
     ];
 
-    $form['event']['ga_event_bounce'] = [
+    $form['event']['ga_event_noninteraction'] = [
       '#type' => 'radios',
-      '#title' => $this->t('Count as Bounce'),
-      '#description' => $this->t("Whether to treat the event as a bounce."),
+      '#title' => $this->t('Non-interaction event?'),
+      '#description' => $this->t("Whether to treat as a non-interaction event."),
       '#options' => [
         1 => $this->t('Yes'),
         0 => $this->t('No'),
       ],
-      '#default_value' => $entity->get('ga_event_bounce') ? : 0,
+      '#default_value' => $entity->get('ga_event_noninteraction') ? : 0,
       '#required' => TRUE,
     ];
 
