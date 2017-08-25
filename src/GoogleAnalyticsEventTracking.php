@@ -88,7 +88,7 @@ class GoogleAnalyticsEventTracking  {
           if (empty($attachments['#attached']['drupalSettings'])) {
             $attachments['#attached']['drupalSettings'] = [];
           }
-          $attachments['#attached']['drupalSettings']['google_analytics_et'][] = $tracker->getJsSettings();
+          $attachments['#attached']['drupalSettings']['googleAnalyticsEt'][] = $tracker->getJsSettings();
           $renderer->addCacheableDependency($attachments, $tracker);
         }
       }
