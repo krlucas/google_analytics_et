@@ -20,6 +20,7 @@ class GoogleAnalyticsEventTrackingJsTest extends JavascriptTestBase {
   public static $modules = [
     'google_analytics',
     'google_analytics_et',
+    'google_analytics_et_test',
   ];
 
   /**
@@ -29,11 +30,10 @@ class GoogleAnalyticsEventTrackingJsTest extends JavascriptTestBase {
     parent::setUp();
     $this->container->get('theme_installer')->install(['bartik']);
     $this->container->get('config.factory')->getEditable('system.theme')->set('default', 'bartik')->save();
-    $this->createContentType(['type' => 'page']);
     GoogleAnalyticsEventTracker::create([
       'label' => 'test tracker',
       'id' => 'test_tracker',
-      'element_selector' => '#logo',
+      'element_selector' => '#edit-test-radios-two',
       'dom_event' => 'click',
       'ga_event_category' => 'test category',
       'ga_event_action' => 'test action',
@@ -41,7 +41,6 @@ class GoogleAnalyticsEventTrackingJsTest extends JavascriptTestBase {
       'ga_event_value' => 666,
       'ga_event_noninteraction' => 0,
     ]);
-    $node = $this->createNode(['type' => 'page']);
 
   }
 
@@ -49,7 +48,16 @@ class GoogleAnalyticsEventTrackingJsTest extends JavascriptTestBase {
    * Ensure a tracker config adds a click event to an element.
    */
   public function testClickTrackerConfig() {
+    $web_assert = $this->assertSession();
+    $this->drupalGet('<front>');
+    $drupal_settings = $this->getDrupalSettings();
+    $this->assertArrayNotHasKey('googleAnalyticsEt', $drupal_settings, 'No google analytics event trackers configured for front page.');
+    $web_assert->elementNotExists('xpath', "//[@data-google-analytics-et-processed = 'true']");
 
+    $this->drupalGet('/google_analytics_et_test/test');
+    $drupal_settings = $this->getDrupalSettings();
+    $this->assertArrayHasKey('googleAnalyticsEt', $drupal_settings, 'Google analytics event trackers configured for test page.');
+    $web_assert->elementExists('xpath', "//[@data-google-analytics-et-processed = 'true']");
   }
 
 
