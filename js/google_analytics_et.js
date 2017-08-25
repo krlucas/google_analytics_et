@@ -18,7 +18,7 @@
         for (var j = 0; j < elements.length; j++) {
           elements[j].addEventListener(trackers[i].event, (function(setting, element) {
               return function(e) {
-                Drupal.googleAnaltyicsEt(setting, element);
+                Drupal.googleAnalyticsEt(setting, element);
               };
           }) (trackers[i], elements[j]), false)
         }
@@ -26,15 +26,22 @@
     }
   };
 
-  Drupal.googleAnaltyicsEt = function (tracker, element) {
+  Drupal.googleAnalyticsEt = function (tracker, element) {
     ga('send', {
       'hitType': 'event',
-      'eventCategory': tracker.category,
-      'eventAction': tracker.action,
-      'eventLabel': tracker.label,
-      'eventValue': tracker.value,
+      'eventCategory': Drupal.googleAnalyticsEtTokenReplace(tracker.category, element),
+      'eventAction': Drupal.googleAnalyticsEtTokenReplace(tracker.action, element),
+      'eventLabel': Drupal.googleAnalyticsEtTokenReplace(tracker.label, element),
+      'eventValue': Number(tracker.value),
       'nonInteraction': Boolean(tracker.bounce)
     });
-  }
-})(Drupal, drupalSettings);
+  };
 
+  Drupal.googleAnalyticsEtTokenReplace = function(str, element) {
+    var elem_text = element.innerText || element.textContent;
+    var elem_href = element.getAttribute('href') || '';
+    var current_page = window.location.href;
+    return str.replace('!text', elem_text).replace('!href', elem_href).replace('!currentPage', current_page);
+  }
+
+})(Drupal, drupalSettings);
