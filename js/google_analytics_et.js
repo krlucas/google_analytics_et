@@ -11,16 +11,19 @@
       if (typeof ga == 'undefined') {
         return;
       }
-      var trackers = drupalSettings.googleAnalyticsEt;
+      var trackers = settings.googleAnalyticsEt;
       // Iterate over our tracker settings.
       for (var i = 0; i < trackers.length; i++) {
-        var elements = document.querySelectorAll(trackers[i].selector);
+        var elements = context.querySelectorAll(trackers[i].selector);
         for (var j = 0; j < elements.length; j++) {
-          elements[j].addEventListener(trackers[i].event, (function(setting, element) {
+          if (!elements[j].hasAttribute('data-google-analytics-et-processed')) {
+            elements[j].addEventListener(trackers[i].event, (function(setting, element) {
               return function(e) {
                 Drupal.googleAnalyticsEt(setting, element);
               };
-          }) (trackers[i], elements[j]), false)
+            }) (trackers[i], elements[j]), false);
+            elements[j].setAttribute('data-google-analytics-et-processed', 'true');
+          }
         }
       }
     }
